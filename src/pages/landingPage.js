@@ -5,6 +5,7 @@ import BlogVideo from '../components/blogVideo/BlogVideo.js'
 import { Link } from "react-router-dom";
 import './landingpage.modules.css'
 import axios from 'axios'
+import play from '../images/Playbutton.svg'
 
 function LandingPage({theme}) {
 
@@ -112,7 +113,8 @@ function LandingPage({theme}) {
                         h='100%'
                         
                         >
-            
+                        <img className="small-playbutton" src={play} alt="" />
+
                     </video>
                     <div className="write-up-two">
                         <span className="title-two">
@@ -136,6 +138,7 @@ function LandingPage({theme}) {
                         muted
                         h='100%'
                         >
+                        <img className="playbutton" src={play} alt="" />    
             
                     </video>
                     <div className="write-up-two">

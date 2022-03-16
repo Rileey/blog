@@ -40,6 +40,12 @@
 
 .small-video {
     width: 250px;
+    position: relative;
+}
+
+small-playbutton {
+    position: absolute;
+    left: 50%;
 }
 
 .blogVideoLayout {

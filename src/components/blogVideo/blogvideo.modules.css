@@ -1,0 +1,45 @@
+.video {
+    position: relative;
+}
+
+.playbutton {
+    position: absolute;
+    width: 100px;
+    margin-left: -50px;
+    left: 47%;
+    top: 57%;
+    margin-top: -50px;
+}
+
+.playbutton:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1125px) { 
+    .playbutton {
+        left: 50%;
+        top: 50%;
+    }
+}
+
+@media screen and (max-width: 800px) { 
+    .playbutton {
+        position: absolute;
+        width: 70px;
+        margin-left: -35px;
+        left: 50%;
+        top: 57%;
+        margin-top: -50px; 
+    }
+}
+
+@media screen and (max-width: 500px) { 
+    .playbutton {
+        position: absolute;
+        width: 40px;
+        margin-left: -20px;
+        left: 50%;
+        top: 80%;
+        margin-top: -50px; 
+    }
+}

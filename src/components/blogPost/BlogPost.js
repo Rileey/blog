@@ -6,16 +6,16 @@ import './blogpost.modules.css'
 
 function BlogPost({post}) {
 
-  const [singlePost, setSinglePost] = useState([])
+  // const [singlePost, setSinglePost] = useState([])
 
-  useEffect(() => {
-      const getPost = async () => {
-          const res = await axios.get(`https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/${post._id}`);
-          console.log(res.data) 
-          return setSinglePost(res.data)
-  }
-      getPost()
-  }, [post._id])
+  // useEffect(() => {
+  //     const getPost = async () => {
+  //         const res = await axios.get(`https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/${post._id}`);
+  //         console.log(res.data) 
+  //         return setSinglePost(res.data)
+  // }
+  //     getPost()
+  // }, [post._id])
 
 
     return (
