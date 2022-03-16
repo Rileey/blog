@@ -1,14 +1,16 @@
-import {  Box, Image } from '@chakra-ui/react'  
+import './navbar.modules.css' 
 
 
 function NavBar() {
 return (
-    <Box bg='#232323' h={16} display='flex' alignItems='center' p='0px 90px'>
-        <Image src='./nav-logo.svg' h='40px'/>
-        <Box m='0 20px' color='#fff'>
+    <div className="nav-container">
+        {/* <Image src='./nav-logo.svg' h='40px'/> */}
+        <img className="nav-logo" src="./nav-logo.svg" alt="" />
+        <div className="nav-heading">    
         Everyday News
-        </Box>
-    </Box>
+        </div>
+    </div>   
+
 );
   }
   

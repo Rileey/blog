@@ -1,0 +1,150 @@
+.singlepost-container{
+    margin: 20px 90px;
+}
+
+.singlepost-title {
+    margin: 10px 0;
+    padding:20px 0px;
+    /* fontSize: ['20px', '35px', '50px', */
+    font-size: 55px;
+    font-weight: 400;
+    font-family: 'Playfair Display, serif'
+}
+
+.share {
+    display: flex;
+}
+
+.share-post {
+    margin-right: 10px; 
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.social {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+}
+
+.social-logos {
+    margin: 0 5px;
+    width: 30px;
+}
+
+.jumbotron-container{
+    margin: 30px 0;
+}
+
+.jumbotron{
+    height: 500px;
+    object-fit: cover;
+}
+
+.jumbo-tag {
+    font-size: 10px;
+    font-weight: 100;
+    color: #ACACAC;
+}
+
+.jumbo-info {
+    display: flex; 
+    align-items: center; 
+    margin-top: 10px;
+}
+
+.logo-sub {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.jumbo-logo {
+    width: 15px;
+}
+
+.jumbo-caption {
+    margin-left: 5px; 
+    font-weight: bold;
+    font-size: 10px;
+    color: #ACACAC;
+}
+
+.blog-content-container {
+    margin:30px 0;
+    width: 80%;
+}
+
+.blog-content {
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.blog-engagement {
+    border-top: 1px solid black; 
+    padding: 20px 0;
+}
+
+.top-stories-container {
+    border-top: 1px solid black;
+    padding: 20px 0;
+    margin-bottom: 500px;
+}
+
+.topStories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0px 30px;
+    align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+    .singlepost-title {
+        font-size: 40px;
+    }
+    .topStories{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .blog-content-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .singlepost-container {
+        margin: 20px 0px;
+    }
+    .singlepost-title {
+        display: flex;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .share {
+        display: flex;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .blog-content {
+        display: flex;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .category {
+        display: flex;
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .topStories {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .singlepost-title {
+        font-size: 30px;
+    }
+}

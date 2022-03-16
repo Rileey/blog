@@ -1,39 +1,52 @@
 // import './components/blogPost/blogpost.modules.css'
-import {  Box, Image } from '@chakra-ui/react'  
+import { useEffect, useState } from 'react' 
+import axios from 'axios'
+import './blogpost.modules.css'
 
 
-function BlogPost({theme}) {
+function BlogPost({post}) {
+
+  const [singlePost, setSinglePost] = useState([])
+
+  useEffect(() => {
+      const getPost = async () => {
+          const res = await axios.get(`https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/${post._id}`);
+          console.log(res.data) 
+          return setSinglePost(res.data)
+  }
+      getPost()
+  }, [post._id])
+
+
     return (
-      <Box m='10px 10px 30px 10px'>
-      <Box maxW='350px' >
-      <Image 
-      src='https://bit.ly/2Z4KKcF' 
+      <div className="new">
+          <div className="blogpost-container">
+          <div className="blogImage-container">
+  
+      <img 
+      // src={singlePost.jetpack_featured_media_url} 
+      src='https://brooksandblake.com/blogapis/wp-content/uploads/2019/04/It-is-official-PSEM-and-NUGA-sign-HiSL-MoU.jpeg'
       alt='Rear view of modern home with pool' 
-      h={200}
-      w={300}
+      h='200px'
+      w='200px'
       />
 
-      <Box p='6px 0px'>
 
-        <Box
-          mt='1'
-          textStyle='title'
-        >
+      <div className="blogPost-content-container">
+
+        <span className="title">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          
-        </Box>
-        <Box
-          mt='1'
-          textStyle='caption'
-        >
-          Nulla quis egestas ipsum. Quisque in mattis lacus. 
-          Sed fermentum magna vitae ante posuere, sit amet posuere libero egestas.
-        </Box>
+        </span>
+        <span className='post-caption'>
+        Nulla quis egestas ipsum. Quisque in mattis lacus. Sed fermentum magna vitae ante posuere, sit amet posuere libero egestas.
+        </span>
 
-       
-      </Box>
-    </Box>
-    </Box>
+        </div>
+
+    </div>
+    </div>
+      </div>
+        
 
     );
   }

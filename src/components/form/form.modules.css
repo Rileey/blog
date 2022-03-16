@@ -1,0 +1,87 @@
+.form-container{
+    display :flex;
+    flex-direction :column;
+    width :900px; 
+    padding :30px 40px;
+}
+
+.form-body-container {
+    margin-top: 20px;
+}
+
+.input-comments {
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(224, 223, 223);
+    margin: 20px 0;
+}
+
+.form-content {
+
+}
+
+.form-middle {
+    display: grid;
+    grid-template-columns :repeat(2, 1fr); 
+}
+
+.formName {
+    font-size: 15px;
+    font-weight: 100;
+    margin: 10px 5px;
+}
+
+.input-name {
+    padding: 10px 20px;
+    width: 80%;
+    font-weight: 100;
+    border-radius: 30px;
+    border: 1px solid rgb(224, 223, 223);
+    margin: 20px 0;
+    font-size: 15px;
+}
+
+.form-button {
+    margin: 30px 0px 5px 0px; 
+    border-radius :30px; 
+    width: 200px;
+    padding: 10px 20px 10px 20px;
+    background-color: #00B0F0;
+    color: #fff;
+}
+
+
+
+@media screen and (max-width: 1110px) {
+    .form-container {
+        width: 90%
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .form-middle {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .form-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .input-name {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .form-container {
+        padding: 0 10px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .form-button {
+        width: 100%;
+    }
+}

@@ -1,6 +1,4 @@
-import { extendTheme, ChakraProvider, Text, Box, Badge, Grid, GridItem, Image } from '@chakra-ui/react' 
 import NavBar from '../components/navBar/NavBar.js';
-// import TwitterIcon from '@mui/icons-material/Twitter';
 import facebook from '../images/facebook.svg'
 import twitter from '../images/twitter.svg'
 import linkedin from '../images/linkedin.svg'
@@ -11,6 +9,7 @@ import clock from '../images/clock.svg'
 import Comment from '../components/comment/comment.js'
 import Form from '../components/form/form.js'
 import TopStories from '../components/topStories/TopStories.js'
+import './singlepost.modules.css'
 
 
 
@@ -19,55 +18,50 @@ function SinglePost() {
     return (
       < >
         <NavBar />
-        <Box p='0px 90px'>
-            <Text textStyle='posttitle' p ='20px 0px'>
+        <div className="singlepost-container"> 
+            <span className="singlepost-title">   
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae iaculis nisi.
-            </Text>
-            <Box display='flex'>
-                <Text mr='10px' textStyle='form' display='flex' alignItems='center'>
+            </span>
+            <div className="share">
+                <span className="share-post">
                 Share This Post:
-                </Text>
-                <Grid templateColumns='repeat(4, 1fr)' gap={2} alignItems='center'>
-                    <img width={30} src={facebook} alt="" />
-                    <img width={30} src={twitter} alt="" />
-                    <img width={30} src={whatsapp} alt="" />
-                    <img width={30} src={linkedin} alt="" />
-                </Grid>
-            </Box>
-            <Box m='20px 0'>
-                <Image height='500px' objectFit='cover' src="https://images.unsplash.com/photo-1533282960533-51328aa49826?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2742&q=80" alt="post"  />
-                <Text textStyle='subcaption'>
+                </span>
+
+                <div className="social">    
+                    <img className="social-logos" src={facebook} alt="" />
+                    <img className="social-logos" src={twitter} alt="" />
+                    <img className="social-logos" src={whatsapp} alt="" />
+                    <img className="social-logos" src={linkedin} alt="" />
+                </div>    
+            </div>
+            <div className="jumbotron-container">    
+                <img className="jumbotron" src="https://images.unsplash.com/photo-1533282960533-51328aa49826?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2742&q=80" alt="post"  />
+                <span className="jumbo-tag">
                     Financial Writer
-                </Text>
-                <Box display='flex' alignItems='center' mt="10px">
-                    <Box display='flex' alignItems='center'> 
-                        <Box>
-                        <img src={userlogo} width={15} alt="" />
-                        </Box>
-                        <Text textStyle='subcaption' ml='5px' fontWeight='bold'>
+                </span>
+                <div className="jumbo-info">
+                    <div className="logo-sub">
+                        <img className="jumbo-logo" src={userlogo} alt="" />
+                        <span className="jumbo-caption">    
                             Solomon James
-                        </Text>
-                    </Box>
-                    <Box display='flex' alignItems='center'> 
-                    <Box ml='10px'>
-                    <img src={calendarlogo} width={15} alt="" />
-                    </Box>
-                        <Text textStyle='subcaption' ml='5px' fontWeight='bold'>
+                        </span>    
+                    </div>
+                    <div className="logo-sub">
+                        <img className="jumbo-logo" src={calendarlogo} alt="" />
+                        <span className="jumbo-caption">    
                             1 March 2022
-                        </Text>
-                    </Box>
-                    <Box display='flex' alignItems='center'> 
-                    <Box ml='10px'>
-                    <img src={clock} width={15} alt="" />
-                    </Box>
-                        <Text textStyle='subcaption' ml='5px' fontWeight='bold'>
+                        </span>    
+                    </div>
+                    <div className="logo-sub">
+                        <img className="jumbo-logo" src={clock} alt="" />
+                        <span className="jumbo-caption">    
                             6 Minutes Read
-                        </Text>
-                    </Box>
-                </Box>
-            </Box>
-            <Box m='30px 0' width='80%'>
-                <Text textStyle='title' fontWeight='100'>
+                        </span>    
+                    </div>
+                </div>
+            </div>
+            <div className="blog-content-container">    
+                <span className="blog-content">    
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae iaculis nisi. 
                 Praesent varius diam nisi, sit amet mollis dolor pharetra sit amet. 
                 Suspendisse porttitor viverra nunc nec ultrices. Nam venenatis quis massa at tempus. 
@@ -84,32 +78,31 @@ function SinglePost() {
                 convallis viverra eros. Proin in neque nisi. Proin eu nunc fringilla, dapibus nisi nec, pretium felis. 
                 Sed aliquam dui est, auctor egestas turpis dictum a. Donec placerat eu orci eget cursus. 
                 Mauris sodales iaculis mauris et feugiat. In aliquam mi lacinia massa egestas rutrum.
-                </Text>
-
-            </Box>
-            <Box>
-                <Text textStyle='heading' m='10px 5px'>
+                </span>
+            </div>
+            <div>
+                <span className="category">
                     Reader Comments
-                </Text>
-            </Box>
-            <Box borderTop='1px solid black' p='20px 0'>
+                </span>
+            </div>
+            <div className="blog-engagement">    
                 <Comment />
                 <Comment />
                 <Form />
-            </Box>
-                <Box>
-                <Text textStyle='heading' m='10px 5px'>
+            </div>    
+            <div>
+                <span className="category">
                     Top Stories
-                </Text>
-                </Box>
-            <Box borderTop='1px solid black' p='20px 0' mb='500px'>
-                <Grid  templateColumns='repeat(3, 1fr)' p='0px 30px' gap={10} alignItems='center'>
+                </span>
+            </div>
+            <div className="top-stories-container">    
+                <div className="topStories">    
                     <TopStories />
                     <TopStories />
                     <TopStories />
-                </Grid>
-            </Box>
-        </Box>
+                </div>    
+            </div>    
+        </div>    
       </>
     );
 }

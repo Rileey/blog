@@ -1,0 +1,26 @@
+.nav-container{
+    background-color: #232323;
+    display: flex;
+    align-items:center;
+    padding: 0px 90px;
+    height: 80px;
+}
+
+.nav-logo{
+    height: 40px;
+}
+
+.nav-heading {
+    margin: 0 20px;
+    color: #fff;
+}
+
+@media screen and (max-width: 380px) {
+    .nav-container{
+        display: flex;
+        font-size: 13px;
+    }
+    .nav-logo{
+        height: 20px;
+    }
+}
