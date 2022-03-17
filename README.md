@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Everyday News React Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live site (https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
