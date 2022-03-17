@@ -41,7 +41,7 @@ function LandingPage({post}) {
       <div className="landing-container">    
       <div className="categoryName">
         <span className="category">
-            Category Name
+            News
         </span>
         <div className="moreVideos">
         <span className="cap">
@@ -85,7 +85,7 @@ function LandingPage({post}) {
         
      <div className="categoryName">
         <span className="category">
-            Category Name
+            Top Videos
         </span>
         <div className="moreVideos">
         <span className="cap">
@@ -173,7 +173,7 @@ function LandingPage({post}) {
   
         <div className="categoryName">
         <span className="category">
-            Category Name
+            Featured
         </span>
         <div className="moreVideos">
         <span className="cap">
