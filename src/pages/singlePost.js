@@ -23,41 +23,49 @@ function SinglePost({post}) {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [comments, setComments] = useState('')
-    const [people, setPeople] = useState([])
+    const {id} = useParams()
+    const [page, setPage] = useState([])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (name && comments) {
-            const person = { id: new Date().getTime().toString(), name, comments };
-            setPeople((people) => {
-              return [...people, person];
-            });
-            setName("");
-            setEmail("");
-            setComments("");
-          } else {
-            console.log("empty values");
-          }
+        try {
+            if (comments){
+                await axios.post(`https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/${id}`, {
+                    name, comments,
+                })
+            } else {
+                alert('please make a comment')
+            }
+           
+          
+        } catch (err) {
+          console.log(err)
+        }
+
+
 
     }
 
-    console.log(people)
 
-
-    const {id} = useParams()
-    const [page, setPage] = useState([])
+    
 
     useEffect(() => {
         const getPage = async () => {
             const res = await axios.get(`https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/${id}`)
             try {
-              return setPage(res.data)
+              setPage(res.data)
             } catch (err) {
               console.log(err)
             }
           }
         getPage()
     }, [id])  
+
+ 
+        const postComment = async () => {
+           
+          }
+        postComment() 
 
 
     return (
@@ -118,7 +126,7 @@ function SinglePost({post}) {
                 </span>
             </div>
             <div className="blog-engagement">    
-                <Comment name={name} comments={comments}/>
+                <Comment />
     <form className="form-container" onSubmit={handleSubmit}>  
         <span className="form-heading">
           Join the discussion

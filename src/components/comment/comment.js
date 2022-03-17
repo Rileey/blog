@@ -2,19 +2,18 @@ import message from '../../images/message.svg'
 import './comment.modules.css'
 
 
-function Comment({name, comments}){
+function Comment(){
     return(
     <>
       <div className="comment-container">
         <span className="comment">  
-        {/* Fusce bibendum fringilla nunc vitae condimentum. Vivamus ante velit, 
-        fermentum id mattis sed, venenatis eu nulla. Proin lacus dui, faucibus sit amet maximus et, */}
-        {comments}
+        Fusce bibendum fringilla nunc vitae condimentum. Vivamus ante velit, 
+        fermentum id mattis sed, venenatis eu nulla. Proin lacus dui, faucibus sit amet maximus et,
         </span>
         <div className="comment-bottom-container">
           <div className="bottom-left">  
             <span className="bottom-left-name">
-              {name}
+              Felix
             </span>
             <span className="bottom-left-time">
               An hour ago

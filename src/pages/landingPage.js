@@ -8,29 +8,6 @@ import axios from 'axios'
 import play from '../images/Playbutton.svg'
 
 function LandingPage({post}) {
-        
-
-
-// const dummyData = [
-//     {
-//         id: 1,
-//         title: 'Your mum',
-//         excerpt: 'I am having issues with this Api, why??',
-//         content: 'Can someone please help me'
-//     },
-//     {
-//         id: 2,
-//         title: 'Your Dad',
-//         excerpt: 'I am having issues with this Api, why??',
-//         content: 'Can someone please help me'
-//     },
-//     {
-//         id: 3,
-//         title: 'Your Sister',
-//         excerpt: 'I am having issues with this Api, why??',
-//         content: 'Can someone please help me'
-//     }
-// ]
 
 
 
@@ -51,15 +28,6 @@ function LandingPage({post}) {
         </div>
     </div>
         <div className="blog-list">
-            
-            {/* 
-            somthing seems to be wrong with your API. It says your account has been suspended
-            I'm just going to go ahead and focus on the page design.
-            */}
-
-                    
-
-                     {/* <BlogPost key={post.id} post={post} /> */}
                      {
                         post.map((blog)=> (
                         <Link to={`/post/${blog.id}`}>
@@ -67,20 +35,6 @@ function LandingPage({post}) {
                         </Link>
                         ))
                      } 
-                    
-
-
-            {/* <Link to={'/post'}>
-            <BlogPost />
-            </Link>
-            <BlogPost />
-            <BlogPost />
-            <BlogPost />
-            <BlogPost />
-            <BlogPost />
-            <BlogPost />
-            <BlogPost /> */}
-            
         </div>
         
      <div className="categoryName">
@@ -186,7 +140,9 @@ function LandingPage({post}) {
     <div className="blog-list-swipe">
         {
           post.map((blog)=> (
+            <Link to={`/post/${blog.id}`}>
             <BlogPost key={blog.id} blog={blog} />
+            </Link>
         ))  
         }
       
