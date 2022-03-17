@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import NavBar from '../components/navBar/NavBar.js';
 import facebook from '../images/facebook.svg'
 import twitter from '../images/twitter.svg'
@@ -10,17 +12,60 @@ import Comment from '../components/comment/comment.js'
 import Form from '../components/form/form.js'
 import TopStories from '../components/topStories/TopStories.js'
 import './singlepost.modules.css'
+import { useParams } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 
 
 
-function SinglePost() {
+
+function SinglePost({post}) {
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [comments, setComments] = useState('')
+    const [people, setPeople] = useState([])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (name && comments) {
+            const person = { id: new Date().getTime().toString(), name, comments };
+            setPeople((people) => {
+              return [...people, person];
+            });
+            setName("");
+            setEmail("");
+            setComments("");
+          } else {
+            console.log("empty values");
+          }
+
+    }
+
+    console.log(people)
+
+
+    const {id} = useParams()
+    const [page, setPage] = useState([])
+
+    useEffect(() => {
+        const getPage = async () => {
+            const res = await axios.get(`https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/${id}`)
+            try {
+              return setPage(res.data)
+            } catch (err) {
+              console.log(err)
+            }
+          }
+        getPage()
+    }, [id])  
+
 
     return (
       < >
         <NavBar />
         <div className="singlepost-container"> 
             <span className="singlepost-title">   
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae iaculis nisi.
+           {page.title?.rendered}
             </span>
             <div className="share">
                 <span className="share-post">
@@ -35,7 +80,7 @@ function SinglePost() {
                 </div>    
             </div>
             <div className="jumbotron-container">    
-                <img className="jumbotron" src="https://images.unsplash.com/photo-1533282960533-51328aa49826?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2742&q=80" alt="post"  />
+                <img className="jumbotron" src={page.jetpack_featured_media_url} alt="post"  />
                 <span className="jumbo-tag">
                     Financial Writer
                 </span>
@@ -61,23 +106,10 @@ function SinglePost() {
                 </div>
             </div>
             <div className="blog-content-container">    
-                <span className="blog-content">    
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae iaculis nisi. 
-                Praesent varius diam nisi, sit amet mollis dolor pharetra sit amet. 
-                Suspendisse porttitor viverra nunc nec ultrices. Nam venenatis quis massa at tempus. 
-                Suspendisse pretium metus magna, et interdum dolor gravida luctus. 
-                Fusce maximus nisi eros, eu malesuada ipsum ultrices vel. Nam in mi finibus, venenatis nisi tempor, feugiat massa. 
-
-                Quisque elementum, mi vel sodales luctus, est nunc egestas tortor, eget accumsan sapien lorem vitae erat. 
-                Curabitur a ex iaculis, posuere lorem at, varius urna. Nam iaculis viverra eros porta fringilla. 
-                Nulla vulputate, orci eu convallis rutrum, metus felis euismod quam, quis faucibus mauris dolor eget quam. 
-                Proin facilisis erat nunc, quis placerat erat tempor ut. Vestibulum fermentum a ligula id faucibus.
-
-                Pellentesque maximus ipsum nunc, eleifend congue nisl faucibus ut. 
-                Nulla ultricies augue ut viverra congue. Maecenas arcu metus, posuere sed orci ut, 
-                convallis viverra eros. Proin in neque nisi. Proin eu nunc fringilla, dapibus nisi nec, pretium felis. 
-                Sed aliquam dui est, auctor egestas turpis dictum a. Donec placerat eu orci eget cursus. 
-                Mauris sodales iaculis mauris et feugiat. In aliquam mi lacinia massa egestas rutrum.
+            <span className='post-caption' dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(page.content?.rendered),
+              }}>   
+                
                 </span>
             </div>
             <div>
@@ -86,9 +118,32 @@ function SinglePost() {
                 </span>
             </div>
             <div className="blog-engagement">    
-                <Comment />
-                <Comment />
-                <Form />
+                <Comment name={name} comments={comments}/>
+    <form className="form-container" onSubmit={handleSubmit}>  
+        <span className="form-heading">
+          Join the discussion
+        </span>
+        <div className="form-body-container">  
+          <input type="text" name="comments" className="input-comments" value={comments} placeholder='Write your comment' onChange={(e)=> setComments(e.target.value)}/>
+          <div className="form-content">  
+            <div className="form-middle">  
+              <div className="form-item">
+                <span className="formName">Your Name</span>
+                <input type="text" name="name" value={name} id="" className="input-name" placeholder='Name' onChange={(e)=> setName(e.target.value)}
+                />
+              </div>
+              <div className="form-item">
+                <span className="formName">Email Address</span>
+                <input type="text" name="email" id="" value={email} className="input-name" placeholder='Email' onChange={(e)=> setEmail(e.target.value)}
+                />
+              </div>
+            </div>  
+          </div>  
+          <div>  
+            <input className='form-button' type="button" value="Submit" />
+          </div>  
+        </div>  
+      </form>
             </div>    
             <div>
                 <span className="category">
@@ -96,10 +151,10 @@ function SinglePost() {
                 </span>
             </div>
             <div className="top-stories-container">    
-                <div className="topStories">    
-                    <TopStories />
-                    <TopStories />
-                    <TopStories />
+                <div className="topStories"> 
+                {post.map((top)=>(
+                    <TopStories key={top.id} top={top}/>
+                ))}  
                 </div>    
             </div>    
         </div>    

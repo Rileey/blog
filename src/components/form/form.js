@@ -17,7 +17,7 @@ function Form(){
               </div>
               <div className="form-item">
                 <span className="formName">Email Address</span>
-                <input type="text" name="name" id="" className="input-name" placeholder='Email' />
+                <input type="text" name="email" id="" className="input-name" placeholder='Email' />
               </div>
             </div>  
           </div>  

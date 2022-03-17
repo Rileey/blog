@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import BlogPost from '../components/blogPost/BlogPost'
 import NavBar from '../components/navBar/NavBar.js'
 import BlogVideo from '../components/blogVideo/BlogVideo.js'
@@ -7,22 +7,31 @@ import './landingpage.modules.css'
 import axios from 'axios'
 import play from '../images/Playbutton.svg'
 
-function LandingPage({theme}) {
+function LandingPage({post}) {
+        
 
-    const [posts, setPosts] = useState([])
 
-  useEffect(() => {
-      const getPosts = async () => {
-          const res = await axios.get('https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/')
-          try {
-            console.log(res.data) 
-            return setPosts(res.data)
-          } catch (err) {
-            console.log(err)
-          }
-        }
-      getPosts()
-  }, [])
+// const dummyData = [
+//     {
+//         id: 1,
+//         title: 'Your mum',
+//         excerpt: 'I am having issues with this Api, why??',
+//         content: 'Can someone please help me'
+//     },
+//     {
+//         id: 2,
+//         title: 'Your Dad',
+//         excerpt: 'I am having issues with this Api, why??',
+//         content: 'Can someone please help me'
+//     },
+//     {
+//         id: 3,
+//         title: 'Your Sister',
+//         excerpt: 'I am having issues with this Api, why??',
+//         content: 'Can someone please help me'
+//     }
+// ]
+
 
 
 
@@ -48,15 +57,20 @@ function LandingPage({theme}) {
             I'm just going to go ahead and focus on the page design.
             */}
 
-            {/* {
-                could not map the component because your API isn't working.
-                posts.map((post)=> {
-                    return(
-                    <BlogPost key={post.id} post={post} />
-                    )
-                })
-            } */}
-            <Link to={'/post'}>
+                    
+
+                     {/* <BlogPost key={post.id} post={post} /> */}
+                     {
+                        post.map((blog)=> (
+                        <Link to={`/post/${blog.id}`}>
+                         <BlogPost key={blog.id} blog={blog} /> 
+                        </Link>
+                        ))
+                     } 
+                    
+
+
+            {/* <Link to={'/post'}>
             <BlogPost />
             </Link>
             <BlogPost />
@@ -65,7 +79,7 @@ function LandingPage({theme}) {
             <BlogPost />
             <BlogPost />
             <BlogPost />
-            <BlogPost />
+            <BlogPost /> */}
             
         </div>
         
@@ -169,11 +183,13 @@ function LandingPage({theme}) {
         </div>
     </div>
 
-    <div className="blog-list">
-      <BlogPost />
-      <BlogPost />
-      <BlogPost />
-      <BlogPost />
+    <div className="blog-list-swipe">
+        {
+          post.map((blog)=> (
+            <BlogPost key={blog.id} blog={blog} />
+        ))  
+        }
+      
     </div>
     </div>
     </>

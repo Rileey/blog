@@ -1,15 +1,15 @@
 // import './components/blogVideos/blogvideos.modules.css'
 import './topstories.modules.css'
 
-function TopStories({theme}) {
+function TopStories({top}) {
 
   return (
     <div className="section-container">  
-      <img className="section-image" src='https://bit.ly/2Z4KKcF' alt='Rear view of modern home with pool' />
+      <img className="section-image" src={top.jetpack_featured_media_url} alt='Rear view of modern home with pool' />
 
       <div className="topstories-caption-container">  
         <span className="topstories-caption">  
-          Modern home in city center in the heart of historic Los Angeles
+          {top.title?.rendered}
         </span>
 
       </div> 
